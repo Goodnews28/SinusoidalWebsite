@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Understanding Migration | Math n' Migration</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+  
+    body {
+      background: url('./images/ChatGPT Image Apr 9, 2025, 06_01_32 PM.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fce2bc;
+    }
+  
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10%;
+      background-color: #412a14;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+  
+    .logo {
+      width: 70px;
+    }
+  
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      position: relative;
+    }
+  
+    nav ul li a {
+      color: #f9ecd3;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+  
+    nav ul li a:hover {
+      color: #b07527;
+    }
+  
+    nav button {
+      padding: 8px 20px;
+      background-color: #e9d5b5;
+      border: none;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+  
+    nav button:hover {
+      background-color: #d6bfa4;
+    }
+  
+    .functions-page {
+      padding: 60px 10%;
+      background-color: rgba(50, 27, 14, 0.85);
+      min-height: 100vh;
+    }
+  
+    .page-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+  
+    .page-header h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 15px;
+      color: #dbb479;
+    }
+  
+    .page-header p {
+      text-align: center;
+      font-size: 18px;
+      color: #fce2bc;
+    }
+  
+    .function-box,
+    .examples {
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+  
+    .earth-gold {
+      background-color: #412a14; /* soft warm cream */
+    }
+  
+    .earth-tan {
+      background-color: #412a14; /* light golden brown */
+    }
+  
+    .earth-lightbrown {
+      background-color: #412a14; /* muted light brown */
+    }
+  
+    h2, h3 {
+      color: #dbb479;
+      margin-top: 5px;
+    }
+  
+    p, ul li {
+      color: #f9ecd3;
+      font-size: 18px;
+    }
+
+    .map-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      background-image: url('./images/wave_bg.png');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: lighten;
+    }
+  
+    .map-container {
+      flex: 1 1 600px;
+      border-radius: 6px;
+      background: #f9ecd3;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  
+    .map-container img {
+      width: 100%;
+      border-radius: 6px;
+    }
+  
+    .map-info {
+      flex: 1 1 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  
+    .map-info h3 {
+      margin-bottom: 15px;
+      color: #dbb479;
+    }
+  
+    .map-info p {
+      color: #f9ecd3;
+      font-size: 16px;
+    }
+  
+    .examples ul {
+      padding-left: 20px;
+    }
+
+    /* Dropdown styling */
+    .dropdown {
+    position: relative;
+    }
+
+    .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: rgba(50, 27, 14, 0.95);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 10px 0;
+    margin-top: 10px;
+    border-radius: 8px;
+    z-index: 1000;
+    min-width: 160px;
+    }
+
+    .dropdown-menu li {
+    padding: 10px 20px;
+    }
+
+    .dropdown-menu li a {
+    color: #fce2bc;
+    text-decoration: none;
+    display: block;
+    }
+
+    .dropdown:hover .dropdown-menu {
+    display: block;
+    }
+
+    /* Migration Section Styling */
+.types-of-migration-section {
+  background-color: #412a14; /* Light tan color */
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 30px 0;
+}
+
+.migration-info {
+  margin-bottom: 20px;
+}
+
+.migration-info h3 {
+  font-size: 28px;
+  color: #dbb479; /* Goldish color */
+  margin-bottom: 10px;
+}
+
+.migration-info p {
+  color: #f9ecd3; /* Light text color */
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.migration-categories {
+  margin-top: 20px;
+}
+
+.migration-categories h4 {
+  font-size: 22px;
+  color: #dbb479;
+  margin-bottom: 15px;
+}
+
+.migration-categories ul {
+  padding-left: 20px;
+  color: #f9ecd3;
+  font-size: 18px;
+}
+
+.migration-categories ul li {
+  margin-bottom: 15px;
+}
+
+.migration-categories ul li strong {
+  color: #dbb479;
+}
+
+    .footer {
+      text-align: center;
+      padding: 18px;
+      background-color: #321b0e;
+      font-size: 13px;
+      color: #d1b896;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .category-card {
+      background-color: #dbb479;
+      color: #321b0e;
+      text-align: center;
+      padding: 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .category-card:hover {
+      background-color: #f9ecd3;
+    }
+
+    .section {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav>
+    <img src="./images/lgo.png" alt="Logo" class="logo">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="sfunctions.html">Functions</a></li>
+        <li><a href="migrations.html">Migration</a></li>
+        <li class="dropdown">
+            <a href="#">Animals</a>
+            <ul class="dropdown-menu">
+                <li><a href="mammals.html">Mammals</a></li>
+                <li><a href="reptiles.html">Reptiles</a></li>
+                <li><a href="birds.html">Birds</a></li>
+                <li><a href="fish.html">Fish</a></li>
+            </ul>
+        </li>
+        <button>More</button>
+    </ul>
+</nav>
+
+  <!-- Main Content -->
+  <main class="functions-page">
+    <header class="page-header">
+      <h1>Understanding Migration</h1>
+      <p>Explore the fascinating world of animal migration and its importance in the natural world.</p>
+    </header>
+
+    <section class="functions-section">
+      <h2>What is Migration?</h2>
+      <p>Migration is the seasonal movement of animals from one region to another. It is typically driven by factors such as food availability, breeding requirements, and weather conditions.</p>
+
+      <!-- Key Concepts -->
+      <div class="function-box earth-gold">
+        <h3>Why Do Animals Migrate?</h3>
+        <ul>
+          <li><strong>Food Scarcity</strong>: Animals migrate to areas where food is more abundant.</li>
+          <li><strong>Breeding</strong>: Many species migrate to specific breeding grounds.</li>
+          <li><strong>Climate</strong>: Some animals travel to find better climates or avoid harsh winters.</li>
+        </ul>
+      </div>
+
+      <!-- Migration Facts -->
+      <div class="function-box earth-tan">
+        <h3>Interesting Migration Facts</h3>
+        <ul>
+          <li>Monarch butterflies travel up to 3,000 miles each year to avoid winter.</li>
+          <li>Birds like the Arctic Tern migrate over 20,000 miles annually, making it one of the longest migrations.</li>
+          <li>Caribou in the Arctic Circle migrate to find food during the harsh winter months.</li>
+        </ul>
+      </div>
+
+      <!-- Types of Migration Section -->
+<div class="types-of-migration-section earth-tan">
+  <div class="migration-info">
+    <h3>Types of Migration</h3>
+    <p>Migration is not just a simple movement from one place to another; there are different types of migration that animals undergo. Here are the major types:</p>
+  </div>
+  
+  <div class="migration-categories">
+    <h4>Key Types of Migration</h4>
+    <ul>
+      <li><strong>Seasonal Migration</strong>: Animals move to find better conditions during different seasons. Many birds, for instance, migrate to warmer climates during the winter months.</li>
+      <li><strong>Reproductive Migration</strong>: Some species, like salmon, migrate to specific breeding grounds to reproduce.</li>
+      <li><strong>Nomadic Migration</strong>: Some species follow a migratory pattern based on food or resource availability rather than seasonal or reproductive cues.</li>
+      <li><strong>Facultative Migration</strong>: Triggered by environmental factors, such as changes in food availability or weather, facultative migration happens based on necessity rather than routine.</li>
+    </ul>
+    <p>Each of these migration types helps animals adapt to their environment and ensure their survival.</p>
+  </div>
+</div>
+
+
+
+
+      <!-- Real-Life Examples -->
+      <div class="examples earth-lightbrown">
+        <h3>Real-Life Migration Examples</h3>
+        <ul>
+          <li><strong>Monarch Butterflies</strong> – Migrate to warmer climates for survival.</li>
+          <li><strong>Arctic Tern</strong> – Longest migration in the animal kingdom.</li>
+          <li><strong>Caribou</strong> – Migrate to find food and avoid winter.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Explore by Category -->
+    <section class="section">
+      <h2><i data-lucide="layout-grid" class="icon"></i> Explore by Category</h2>
+      <div class="category-grid">
+        <a href="mammals.html" class="category-card">Mammals</a>
+        <a href="birds.html" class="category-card">Birds</a>
+        <a href="reptiles.html" class="category-card">Reptiles</a>
+        <a href="fish.html" class="category-card">Fish</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Math & Migration. All rights reserved.</p>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

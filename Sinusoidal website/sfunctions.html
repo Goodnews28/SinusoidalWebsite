@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sinusoidal Functions | Math n' Migration</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+  
+    body {
+      background: url('./images/ChatGPT Image Apr 9, 2025, 06_01_32 PM.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fce2bc;
+    }
+  
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 10%;
+      background-color: #412a14;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+  
+    .logo {
+      width: 70px;
+    }
+  
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      position: relative;
+    }
+  
+    nav ul li a {
+      color: #f9ecd3;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+  
+    nav ul li a:hover {
+      color: #b07527;
+    }
+  
+    nav button {
+      padding: 8px 20px;
+      background-color: #e9d5b5;
+      border: none;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+  
+    nav button:hover {
+      background-color: #d6bfa4;
+    }
+  
+    .functions-page {
+      padding: 60px 10%;
+      background-color: rgba(50, 27, 14, 0.85);
+      min-height: 100vh;
+    }
+  
+    .page-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+  
+    .page-header h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 15px;
+      color: #dbb479;
+    }
+  
+    .page-header p {
+      text-align: center;
+      font-size: 18px;
+      color: #fce2bc;
+    }
+  
+    .function-box,
+    .interactive-graph,
+    .examples {
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+  
+    .earth-gold {
+      background-color: #412a14; /* soft warm cream */
+    }
+  
+    .earth-tan {
+      background-color: #412a14; /* light golden brown */
+    }
+  
+    .earth-lightbrown {
+      background-color: #412a14; /* muted light brown */
+    }
+  
+    h2, h3 {
+      color: #dbb479;
+      margin-top: 5px;
+    }
+  
+    p, ul li {
+      color: #f9ecd3;
+      font-size: 18px;
+    }
+
+    .interactive-graph {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      background-image: url('./images/wave_bg.png');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: lighten;
+    }
+  
+    #sineCanvas {
+      flex: 1 1 600px;
+      border: 2px solid #321b0e;
+      border-radius: 6px;
+      background: #f9ecd3
+    }
+  
+    .graph-info {
+      flex: 1 1 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .side-img {
+      width: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+      max-height: 300px;
+    }
+  
+    label {
+      display: block;
+      font-weight: 600;
+      margin-top: 15px;
+    }
+  
+    input[type="range"] {
+      width: 100%;
+      background: #fce2bc;
+      height: 6px;
+      border-radius: 5px;
+      margin-top: 5px;
+    }
+  
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: #321b0e;
+      cursor: pointer;
+      border: 2px solid #fff;
+    }
+  
+    .examples ul {
+      padding-left: 20px;
+    }
+  
+    /* Dropdown styling */
+    .dropdown {
+    position: relative;
+    }
+
+    .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: rgba(50, 27, 14, 0.95);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 10px 0;
+    margin-top: 10px;
+    border-radius: 8px;
+    z-index: 1000;
+    min-width: 160px;
+    }
+
+    .dropdown-menu li {
+    padding: 10px 20px;
+    }
+
+    .dropdown-menu li a {
+    color: #fce2bc;
+    text-decoration: none;
+    display: block;
+    }
+
+    .dropdown:hover .dropdown-menu {
+    display: block;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 18px;
+      background-color: #321b0e;
+      font-size: 13px;
+      color: #d1b896;
+    }
+  </style>
+  
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav>
+    <img src="./images/lgo.png" alt="Logo" class="logo">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="sfunctions.html">Functions</a></li>
+        <li><a href="migrations.html">Migration</a></li>
+        <li class="dropdown">
+            <a href="#">Animals</a>
+            <ul class="dropdown-menu">
+                <li><a href="mammals.html">Mammals</a></li>
+                <li><a href="reptiles.html">Reptiles</a></li>
+                <li><a href="birds.html">Birds</a></li>
+                <li><a href="fish.html">Fish</a></li>
+            </ul>
+        </li>
+        <button>More</button>
+    </ul>
+</nav>
+
+  <!-- Main Content -->
+  <main class="functions-page">
+    <header class="page-header">
+      <h1>Sinusoidal Functions in Nature</h1>
+      <p>Discover how mathematical waves explain natural movement patterns like migration.</p>
+    </header>
+
+    <section class="functions-section">
+      <h2>Understanding Sinusoidal Functions</h2>
+      <p>Sinusoidal functions help us model periodic behavior, like animal migrations that occur annually or seasonally.</p>
+
+      <!-- Key Concepts -->
+      <div class="function-box earth-gold">
+        <h3>Key Concepts</h3>
+        <ul>
+          <li><strong>Amplitude</strong>: Represents how far the animal travels.</li>
+          <li><strong>Frequency</strong>: How often the animal migrates.</li>
+          <li><strong>Phase Shift</strong>: When the migration starts.</li>
+        </ul>
+      </div>
+
+      <!-- Interactive Graph -->
+      <div class="interactive-graph earth-tan">
+        <div style="flex: 1 1 600px;">
+          <h3>Interactive Graph</h3>
+          <p>Use the sliders to simulate different migration styles:</p>
+          
+          <label for="amplitude">Amplitude</label>
+          <input type="range" id="amplitude" min="1" max="10" step="1" value="5" />
+          
+          <label for="frequency">Frequency</label>
+          <input type="range" id="frequency" min="0.5" max="5" step="0.5" value="1" />
+          
+          <canvas id="sineCanvas" width="600" height="300"></canvas>
+        </div>
+        <div class="graph-info">
+          <img src="./images/didyouknow.png" alt="Sine wave migration" class="side-img" />
+        </div>
+      </div>
+
+      <!-- Real-Life Examples -->
+      <div class="examples earth-lightbrown">
+        <h3>Real-Life Examples</h3>
+        <ul>
+          <li><strong>Caribou</strong> – Large amplitude, migrate long distances</li>
+          <li><strong>Monarch Butterflies</strong> – High frequency, multi-generational migration</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Math & Migration. All rights reserved.</p>
+  </footer>
+
+  <script src="sinegraph.js" defer></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

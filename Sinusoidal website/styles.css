@@ -1,0 +1,192 @@
+/* 🌸 Font & Global Styles */
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #333;
+}
+
+section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2, h3, h4 {
+  font-weight: 700;
+}
+
+/* 🎨 Pastel Background Boxes */
+.pastel-pink {
+  background-color: #FCE4EC;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(255, 182, 193, 0.2);
+}
+
+.pastel-purple {
+  background-color: #EDE7F6;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(186, 104, 200, 0.2);
+}
+
+.pastel-blue {
+  background-color: #E3F2FD;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(100, 181, 246, 0.2);
+}
+
+.pastel-yellow {
+  background-color: #FFF9C4;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(255, 241, 118, 0.2);
+}
+
+.pastel-green {
+  background-color: #E8F5E9;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px rgba(129, 199, 132, 0.2);
+}
+
+/* 📦 Card Layouts */
+.card {
+  border-radius: 20px;
+  padding: 20px;
+  margin: 15px 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* 🎛️ Interactive Slider Section */
+label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+input[type="range"] {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+canvas {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+/* 🔗 Links */
+a {
+  text-decoration: none;
+  color: #2E7D32;
+  font-weight: 600;
+}
+
+a:hover {
+  color: #43A047;
+}
+
+/* 🔘 Buttons */
+.btn {
+  background-color: #A5D6A7;
+  color: #2E7D32;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.btn:hover {
+  background-color: #81C784;
+}
+
+/* 🧭 Navigation Bar Fix (if not already styled) */
+.navbar {
+  background-color: #ffffff;
+  padding: 15px 30px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar a {
+  margin: 0 10px;
+  font-weight: 600;
+  color: #4CAF50;
+}
+
+.navbar a:hover {
+  color: #2E7D32;
+}
+
+/* 🧁 Footer */
+.footer {
+  background-color: #F1F8E9;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  margin-top: 40px;
+  color: #6b6b6b;
+  border-top: 1px solid #dcdcdc;
+}
+
+
+
+
+
+
+<header class="header">
+<nav class="navbar">
+    <div class = "logo"><a href ="index.html"> Math & Migration</a></div>
+        <a href="about.html">About</a>
+        <a href="sfunctions.html">Functions</a>
+        <a href="migrations.html">Migration</a>
+        <div class="dropdown">
+            <button class="dropbtn">Animals
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="mammals.html">Mammals</a>
+                <a href="fish.html">Fish</a>
+                <a href="insects.html">Insects</a>
+                <a href="birds.html">Birds</a>
+                <a href="reptiles.html">Reptiles</a>
+            </div>
+        </div>
+    </div>
+</nav>
+</header>
+
+<section class="hero">
+<h1>Welcome to <span>Math & Migration</span></h1>
+<p>Explore the fascinating world of mathematics and its applications in migration.</p>
+<a href="about.html" class="btn">Learn More</a>
+</section>
+
+<section class="why">
+<h2>Why Math & Migration?</h2>
+<p>Math plays a crucial role in understanding migration patterns, population dynamics, and ecological balance. Our platform provides resources and insights into these complex interactions.</p>
+</section>
+
+<section class="navigatewebsite">
+<h2>Navigate Our Website</h2>
+<p>Use the navigation bar at the top to explore different sections of our website. Each section provides unique insights into the relationship between mathematics and migration.</p>
+</section>
+
+<footer class="footer">
+<p>&copy; 2025 Math & Migration. All rights reserved.</p>
+</footer>
